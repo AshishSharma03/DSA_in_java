@@ -1,0 +1,74 @@
+class Main {
+
+	static class Node {
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data = d;
+			next = null;
+		}
+	}
+
+	static Node reverse(Node head, int k)
+	{
+		if(head == null)
+		return null;
+		Node current = head;
+		Node next = null;
+		Node prev = null;
+
+		int count = 0;
+		while (count < k && current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+			count++;
+		}
+		if (next != null)
+			head.next = reverse(next, k);
+		return prev;
+	}
+    public static Node pushNode(Node head ,int new_data)
+	{
+	
+		Node new_node = new Node(new_data);
+
+		new_node.next = head;
+		head = new_node;
+        return head;
+	}
+    
+    public static void PrintList(Node head)
+	{
+		Node temp = head;
+		while (temp != null) {
+			System.out.print(temp.data + " ");
+			temp = temp.next;
+		}
+		System.out.println();
+	}
+
+	public static void main(String args[])
+	{
+    Node head = null;
+		head = pushNode(head,9);
+		head = pushNode(head,8);
+		head = pushNode(head,7);
+		head = pushNode(head,6);
+		head = pushNode(head,5);
+		head = pushNode(head,4);
+		head = pushNode(head,3);
+		head = pushNode(head,2);
+		head = pushNode(head,1);
+
+		System.out.println("Given Linked List");
+		PrintList(head);
+
+		head = reverse(head, 3);
+
+		System.out.println("Reversed list");
+		PrintList(head);
+	}
+}

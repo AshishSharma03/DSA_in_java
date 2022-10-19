@@ -1,0 +1,22 @@
+class Solution {
+    public int removeDuplicates(int[] arr) {
+            int n = arr.length;
+            int prv = arr[0],count= 1;
+            // O(n)
+            // O(1)         
+        for(int i =0;i<n;i++){
+                
+                if(prv != arr[i] ){
+                    prv = arr[i];
+                    arr[count++]=  prv;  
+                }
+            }  
+        for( int i =0 ;i<n;i++){
+                if(i >= count){
+                    arr[i] = -1;
+                }
+            }
+        
+        return count;
+    }
+}

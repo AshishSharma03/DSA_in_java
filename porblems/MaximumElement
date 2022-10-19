@@ -1,0 +1,45 @@
+import java.util.Arrays;
+
+
+// find Maximum First Second third
+
+class Main{
+
+    static int[] Maximum(int arr[],int n){
+        int fmax = Integer.MIN_VALUE,secndMax = fmax ,thrdMax = fmax;
+        
+        for(int i =0;i<n;i++){
+            if(arr[i]> fmax){
+                secndMax = fmax;
+                fmax = arr[i];
+            }else if( secndMax < arr[i] && fmax > secndMax){
+                thrdMax = secndMax;
+                secndMax = arr[i];
+            }
+            else if( thrdMax < arr[i] && secndMax > thrdMax){
+                thrdMax = arr[i];
+            }
+        }
+
+
+        return new int[]{fmax,secndMax,thrdMax};
+        }
+
+    }
+
+    static int[] OptimalMinimum(int arr[],int n){
+            // O(nlogn) simple solution
+            Arrays.sort(arr);
+            return new int[]{arr[n-1],arr[n-2],arr[n-3]};
+    }
+
+
+    
+    public static void main(String[] args) {
+        int arr[] = {8,99,11,34,77,33,66},n = arr.length;
+        int threeMin[] = Maximum(arr, n);
+        for(int i =0;i<threeMin.length;i++){
+            System.out.print(i + 1+"-position : "+threeMin[i]+"\n");
+        }
+    }
+}

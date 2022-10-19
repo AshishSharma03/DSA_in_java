@@ -1,0 +1,33 @@
+class Main{
+
+    static void swap(int arr[],int l,int r){
+        int temp = arr[r];
+        arr[r] = arr[l];
+        arr[l] = temp;
+    }
+
+    static v
+    public static void main(String[] args) {
+        int arr[] = {0,-1,1,-1,-1,-2,1,2,-3};
+        int l=0, r =arr.length - 1;
+        while(l<r){
+            
+            if(arr[l] < 0){
+                if(arr[r] >= 0){
+                    swap(arr, l, r);
+                    r--;
+                    l++;
+                }else{
+                    r--;
+                }
+            }else{
+                l++;
+            }
+
+        }
+
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}

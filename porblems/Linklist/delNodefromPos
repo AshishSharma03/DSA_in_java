@@ -1,0 +1,73 @@
+class Main{
+
+    static class Node{
+        int data;
+        Node next;
+        Node(int Data){
+            data = Data;
+            next = null;
+        }
+    }
+
+    static Node pushNode(Node head,int data){
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+        return head;
+    }
+
+
+    static void printList(Node head){
+
+        while(head != null){
+            System.out.print(head.data+"->");
+            head = head.next;
+        }
+        System.out.print("Null");    
+    }
+
+
+    static Node DelNode(Node head,int pos){
+
+       if(head == null){
+        return null;
+       }
+       
+       if(pos == 1){
+            head = head.next;
+            return head;
+       }
+
+       int count  = 1;
+       Node temp = head ,prev = null;
+       while(temp != null && count != pos){
+        prev = temp;
+        temp = temp.next;
+        count++;
+       }
+
+       if(temp == null){
+        return head;
+       }
+
+       prev.next  = temp.next;
+       return head;
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+        Node head = null;
+        head = pushNode(head, 4);
+        head = pushNode(head, 3);
+        head = pushNode(head, 2);
+        head = pushNode(head, 1);
+        printList(head);
+        System.out.print("\n");
+        head = DelNode(head, 5);
+        printList(head);
+        
+    }
+}

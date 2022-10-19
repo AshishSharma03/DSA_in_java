@@ -1,0 +1,13 @@
+// Find nOn repeat elemnt 
+
+class Main{
+    public static void main(String[] args) {
+            int arr[] = {4,1,2,1,2,4,5};
+            int n = arr.length;
+            int st =0;
+            for(int i =0;i<n;i++){
+                st = st^arr[i];
+            }
+            System.out.print(st);
+    }
+}

@@ -1,0 +1,17 @@
+public class Main {
+
+
+
+    public static void main(String[] args) {
+        int x = 13231;
+        int db= x,d = 0;
+
+        while(x>0){
+            int lastD = x%10;
+            d = (int )(d * 10) + lastD;
+            x = (x - lastD)/10;
+            }
+            System.out.print(db == d);
+        
+    }
+}

@@ -1,0 +1,26 @@
+class Main{
+
+    static int LinearSearch(int arr[] , int n ,int k){
+        for(int i =0;i<n;i++){
+            if(arr[i] == k){
+                return i;
+            }
+        }
+
+        return -1;
+
+    }
+
+
+    public static void main(String[] args) {
+
+            int arr[] = {2,3,4,5,6}, n = arr.length;
+            int k= 9;
+            int index = LinearSearch(arr, n, k);
+            if(index >= 0){
+                System.out.print(k +" at index "+ index);
+            }else{
+                System.out.print(k +" is not exist in this array");
+            }
+    }
+}

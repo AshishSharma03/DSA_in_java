@@ -1,0 +1,39 @@
+import java.util.Arrays;
+
+class Main{
+
+    static int[] Minimums(int arr[],int n){
+        int min1 ,min2,min3= Integer.MAX_VALUE;
+        min1 = min2 = min3;
+        // O(n) Efficient solution
+        for(int i=0;i<n;i++){
+            if(arr[i] < min1){
+                min3 = min2;
+                min2 = min1;
+                min1 = arr[i];
+            }else if(arr[i] < min2 && min1 < min2){
+                min2 = arr[i];
+            }else if(arr[i]<min2 && min2 < min3){
+                min3 = arr[i];
+            }
+        }
+        return new int[]{min1,min2,min3};
+
+    }
+
+    static int[] OptimalMinimum(int arr[]){
+            // O(nlogn) simple solution
+            Arrays.sort(arr);
+            return new int[]{arr[0],arr[1],arr[2]};
+    }
+
+
+    
+    public static void main(String[] args) {
+        int arr[] = {8,99,11,34},n = arr.length;
+        int threeMin[] = OptimalMinimum(arr);
+        for(int i =0;i<threeMin.length;i++){
+            System.out.print(i + 1+"-position : "+threeMin[i]+"\n");
+        }
+    }
+}

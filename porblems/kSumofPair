@@ -1,0 +1,48 @@
+import java.util.HashMap;
+
+class Main{
+
+    static int[] kSumOfPair(int arr[],int n,int k){
+        // bruiteForce aprocch
+        // time = O(n^2)
+        // space = O(n^2)
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(arr[i] + arr[j] == k){
+                    return new int[]{arr[i],arr[j]};
+                }
+            }
+        }
+
+        return new int[]{};
+    }
+
+    static int[] OprimalKsumOfPair(int arr[],int n,int k){
+
+
+        // time = O(N)
+        // space = O(N)
+        HashMap<Integer,Integer> hashmap= new HashMap<>();
+        for(int i =0;i<n;i++){
+            Integer req = (Integer)(k - arr[i]);
+            if(hashmap.containsKey(req)){
+                return new int[]{arr[hashmap.get(req)],arr[i]};
+            }
+            hashmap.put(arr[i], i);
+        }
+        
+        return new int[]{};
+    }
+
+
+    public static void main(String[] args) {
+        int arr[] = {1,5,7,8,9},k = 15,n = arr.length; 
+        int K[] = OprimalKsumOfPair(arr, n, k);
+        if(K.length == 0)
+        {System.out.print("no sum");}
+        for(int i =0;i<K.length;i++){
+            System.out.print(K[i]+",");
+        }
+
+    }
+}

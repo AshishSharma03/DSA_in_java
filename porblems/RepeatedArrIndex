@@ -1,0 +1,72 @@
+import java.util.Arrays;
+
+// 1,3,5,6,6,6,6,7,9
+// find out first and last value of repetd value6
+
+class Main{
+
+    public static int [] FLrep(int arr[], int n){
+            // O(n^2)
+        int FI= Integer.MAX_VALUE,LI=0;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i] == arr[j]){
+                    FI = Integer.min(FI, i);
+                    LI++;
+                }else if( arr[i] != arr[j] && LI>0){
+                    return new int[]{FI,FI + LI};
+                }
+            }
+        }
+
+        return new int[]{};
+
+    }
+
+
+    public static int[] OptimalS(int arr[], int n){
+        // O(N)
+        // O(1)
+        if(n<3){
+            return new int[]{};
+        }
+
+        int bigE = arr[n-1];
+        int A= 0,B,FI=Integer.MAX_VALUE,LI=0;
+        for(int i=0;i<n;i++){
+            B = bigE - arr[i];
+
+            if(B == A){
+                FI =Integer.min(FI, i);
+                LI++;
+            }else{
+                A = B;
+            }
+    
+            if(i<(n-1) && arr[i] != arr[i+1] && LI>0){
+                return new int[]{FI -1 , (FI+LI) -1};
+            }
+            
+            if(0 == bigE - arr[i] && i == n-1){
+                // System.out.print(FI+" ");
+                return new int[]{FI -1 , (n-1)};
+            }
+            
+            
+        }
+        return new int[]{};
+    }
+
+
+
+
+    public static void main(String[] args) {
+        int arr[] ={1,2,2,2};
+        Arrays.sort(arr);
+        // int newArr[] = FLrep(arr,arr.length);
+        int newArr[] = OptimalS(arr, arr.length);
+        for(int i=0;i<newArr.length;i++){
+            System.out.print(newArr[i]+" ");
+        }
+    }
+}

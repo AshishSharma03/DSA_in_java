@@ -1,0 +1,54 @@
+import java.util.HashMap;
+
+// Count Sum of pair
+
+class Main{
+
+    // static int maxPair(int arr[] , int n,int k){
+    //     int count =0;
+    //     // O(n^2)
+    //     //space comp
+        
+    //     for(int i =0;i<n;i++){
+    //         for(int j = i;j<n;j++){
+    //             if(arr[i] + arr[j] == k){
+    //                 System.out.print("("+arr[i]+","+arr[j]+")"+"\n");
+    //                 count++;
+    //             }
+    //         }
+    //     }
+
+    //     return count;
+    // }
+
+
+
+
+    static int maxPairOptimal(int arr[],int n,int k){
+        // O(n)
+        // O(n) also space 
+        HashMap <Integer,Integer> hasmap = new HashMap<>();
+        int req,count= 0;
+        for(int i=0;i<n;i++){
+            req =  k - arr[i];
+            if(hasmap.containsKey(req)){
+                System.out.print("("+arr[hasmap.get(req)]+","+arr[i]+")"+"\n");
+                count++;
+            }  
+           hasmap.put(arr[i], i); 
+        }
+
+        return count;
+
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i 0;i<n;i++){
+            int arr[i] = sc.nextInt()
+        }
+        int k = sc.nextInt();    
+        System.out.print(maxPair(arr, arr.length, k));
+    }
+}
